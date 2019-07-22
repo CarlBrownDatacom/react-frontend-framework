@@ -1,4 +1,8 @@
-import { css, ThemedCssFunction } from 'styled-components';
+import {
+  css,
+  ThemedCssFunction,
+  FlattenSimpleInterpolation,
+} from 'styled-components';
 
 import THEME from '../config';
 
@@ -10,23 +14,23 @@ interface layout {
   desktopLarge: object;
 }
 
-export default (Object.keys(
-  THEME.layout,
-) as (keyof typeof THEME.layout)[]).reduce(
-  (fromAccumulator, fromName) => {
-    const from = fromAccumulator;
+export default (Object.keys(THEME.layout) as any).reduce(
+  (fromAccumulator: any, fromName: keyof layout) => {
+    const from: any = fromAccumulator;
 
-    from[fromName] = (Object.keys(
-      THEME.layout,
-    ) as (keyof typeof THEME.layout)[]).reduce(
-      (toAccumulator, toName) => {
-        const to = toAccumulator;
+    from[fromName] = (Object.keys(THEME.layout) as any).reduce(
+      (toAccumulator: any, toName: keyof layout) => {
+        const to: any = toAccumulator;
 
-        const minWidth = `(min-width: ${THEME.layout[fromName].breakpoint}px)`;
-        const maxWidth = `(max-width: ${THEME.layout[toName].breakpoint -
-          1}px)`;
+        const minWidth: string = `(min-width: ${
+          THEME.layout[fromName].breakpoint
+        }px)`;
+        const maxWidth: string = `(max-width: ${THEME.layout[toName]
+          .breakpoint - 1}px)`;
 
-        to[toName] = (styles: any) => css`
+        to[toName] = (
+          styles: FlattenSimpleInterpolation,
+        ): FlattenSimpleInterpolation => css`
       @media screen and ${minWidth} and ${maxWidth} {
         ${styles}
       }
@@ -34,7 +38,7 @@ export default (Object.keys(
 
         return to;
       },
-      {} as any,
+      {} as FlattenSimpleInterpolation,
     );
 
     return from;

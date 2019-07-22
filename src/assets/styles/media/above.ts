@@ -1,4 +1,8 @@
-import { css, ThemedCssFunction } from 'styled-components';
+import {
+  css,
+  ThemedCssFunction,
+  FlattenSimpleInterpolation,
+} from 'styled-components';
 
 import THEME from '../config';
 
@@ -10,11 +14,11 @@ interface layout {
   desktopLarge: object;
 }
 
-export default (Object.keys(
-  THEME.layout,
-) as (keyof typeof THEME.layout)[]).reduce(
-  (accumulator, breakpoint) => {
-    accumulator[breakpoint] = (styles: any) => css`
+export default (Object.keys(THEME.layout) as any).reduce(
+  (accumulator: any, breakpoint: keyof layout): layout => {
+    accumulator[breakpoint] = (
+      styles: FlattenSimpleInterpolation,
+    ): FlattenSimpleInterpolation => css`
       @media screen and (min-width: ${THEME.layout[breakpoint].breakpoint}px) {
         ${styles}
       }

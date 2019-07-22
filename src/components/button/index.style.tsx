@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import ButtonReset from '../inputResets/buttonReset';
 
+import { above, below, between } from '../../assets/styles/media';
+
 interface buttonStyleProps {
   disabled?: boolean;
   isPrimary?: boolean;
@@ -41,6 +43,19 @@ export const StyledButton = styled(ButtonReset)`
       font-weight: ${buttonProps.theme.button.fontWeight};
       color: ${buttonProps.theme.colors.primaryBackgroundColor};
       background-color: ${buttonProps.theme.colors.primaryColor};
+
+      ${above.tablet(css`
+        color: yellow;
+      `)}
+
+      ${below.tablet(css`
+        color: orange;
+        background-color: green;
+      `)}
+
+      ${between.tablet.desktop(css`
+        background-color: purple;
+      `)}
 
       &:hover {
         cursor: pointer;

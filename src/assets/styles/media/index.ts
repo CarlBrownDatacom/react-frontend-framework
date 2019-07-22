@@ -1,5 +1,5 @@
 import above from './above';
 import below from './below';
-// import between from './between';
+import between from './between';
 
-export { above, below };
+export { above, below, between };

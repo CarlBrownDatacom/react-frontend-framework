@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'; // importing FunctionComponent
+import React, { FunctionComponent, useState, useEffect } from 'react'; // importing FunctionComponent
 import { StyledButton } from './index.style';
 
 interface ButtonProps {
@@ -17,6 +17,14 @@ const Button: FunctionComponent<ButtonProps> = ({
   isTertiary = false,
   disabled = false,
 }) => {
+  const [temp, tempy] = useState(false);
+
+  useEffect(() => {
+    if (temp) {
+      tempy(true)
+    }
+  }, [])
+
   return (
     <StyledButton
       onClick={handleClick}

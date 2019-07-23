@@ -4,16 +4,18 @@ import './App.css';
 
 import Button from './components/button';
 
-const App: React.FC = () => {
+const App: React.FC = (): React.ReactElement => {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit 
+          <code>src/App.tsx</code> 
+          and save to reload.
         </p>
         <Button
-          handleClick={e => {
+          handleClick={(): void => {
             alert('hellow please work');
           }}
           isPrimary
@@ -21,7 +23,7 @@ const App: React.FC = () => {
           Click me
         </Button>
         <Button
-          handleClick={e => {
+          handleClick={(): void => {
             alert('hellow please work');
           }}
           isSecondary

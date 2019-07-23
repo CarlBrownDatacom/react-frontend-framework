@@ -13,8 +13,7 @@ interface ButtonStyleProps {
 }
 
 export const StyledButton = styled(ButtonReset)`
-  ${(buttonProps: ButtonStyleProps): SimpleInterpolation =>
-    buttonProps.isPrimary &&
+  ${(buttonProps: ButtonStyleProps): SimpleInterpolation => buttonProps.isPrimary &&
     css`
       height: ${buttonProps.theme.button.height};
       padding: 0 ${buttonProps.theme.button.padding};
@@ -33,8 +32,7 @@ export const StyledButton = styled(ButtonReset)`
       }
     `}
 
-  ${(buttonProps: ButtonStyleProps): SimpleInterpolation =>
-    buttonProps.isSecondary &&
+  ${(buttonProps: ButtonStyleProps): SimpleInterpolation => buttonProps.isSecondary &&
     css`
       height: ${buttonProps.theme.button.height};
       padding: 0 ${buttonProps.theme.button.padding};
@@ -55,6 +53,7 @@ export const StyledButton = styled(ButtonReset)`
 
       ${between.tablet.desktop(css`
         background-color: purple;
+        color: green;
       `)}
 
       &:hover {
@@ -63,3 +62,5 @@ export const StyledButton = styled(ButtonReset)`
       }
     `}
 `;
+
+export const temp = 'temp';

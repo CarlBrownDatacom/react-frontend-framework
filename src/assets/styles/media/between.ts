@@ -1,12 +1,11 @@
 import {
   css,
-  ThemedCssFunction,
   FlattenSimpleInterpolation,
 } from 'styled-components';
 
 import THEME from '../config';
 
-interface layout {
+interface Layout {
   mobile: object;
   mobileLarge: object;
   tablet: object;
@@ -15,17 +14,17 @@ interface layout {
 }
 
 export default (Object.keys(THEME.layout) as any).reduce(
-  (fromAccumulator: any, fromName: keyof layout) => {
-    const from: any = fromAccumulator;
+  (fromAccumulator: Layout, fromName: keyof Layout): Layout => {
+    const from = fromAccumulator;
 
     from[fromName] = (Object.keys(THEME.layout) as any).reduce(
-      (toAccumulator: any, toName: keyof layout) => {
-        const to: any = toAccumulator;
+      (toAccumulator: Layout, toName: keyof Layout): Layout => {
+        const to = toAccumulator;
 
-        const minWidth: string = `(min-width: ${
+        const minWidth = `(min-width: ${
           THEME.layout[fromName].breakpoint
         }px)`;
-        const maxWidth: string = `(max-width: ${THEME.layout[toName]
+        const maxWidth = `(max-width: ${THEME.layout[toName]
           .breakpoint - 1}px)`;
 
         to[toName] = (
@@ -38,10 +37,10 @@ export default (Object.keys(THEME.layout) as any).reduce(
 
         return to;
       },
-      {} as FlattenSimpleInterpolation,
+      {},
     );
 
     return from;
   },
-  {} as { [key in keyof typeof THEME.layout]: ThemedCssFunction<layout> },
+  {},
 );

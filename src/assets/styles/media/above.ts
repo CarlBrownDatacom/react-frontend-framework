@@ -1,12 +1,11 @@
 import {
   css,
-  ThemedCssFunction,
   FlattenSimpleInterpolation,
 } from 'styled-components';
 
 import THEME from '../config';
 
-interface layout {
+interface Layout {
   mobile: object;
   mobileLarge: object;
   tablet: object;
@@ -15,7 +14,7 @@ interface layout {
 }
 
 export default (Object.keys(THEME.layout) as any).reduce(
-  (accumulator: any, breakpoint: keyof layout): layout => {
+  (accumulator: Layout, breakpoint: keyof Layout): Layout => {
     accumulator[breakpoint] = (
       styles: FlattenSimpleInterpolation,
     ): FlattenSimpleInterpolation => css`
@@ -26,5 +25,5 @@ export default (Object.keys(THEME.layout) as any).reduce(
 
     return accumulator;
   },
-  {} as { [key in keyof typeof THEME.layout]: ThemedCssFunction<layout> },
+  {},
 );

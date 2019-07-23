@@ -20,12 +20,6 @@
     "jest": true
   },
   "rules": {
-    "@typescript-eslint/explicit-function-return-type": [
-      "error",
-      {
-        "allowTypedFunctionExpressions": true
-      }
-    ],
     "react/prop-types": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "react-hooks/rules-of-hooks": "error",

@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react'; // importing FunctionComponent
+import React, { FunctionComponent, useContext, useState } from 'react'; // importing FunctionComponent
 import { StyledButton } from './index.style';
+import { ThemeContext } from 'styled-components';
 
 interface ButtonProps {
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -17,9 +18,24 @@ const Button: FunctionComponent<ButtonProps> = ({
   isTertiary = false,
   disabled = false,
 }) => {
+  const [specialColors, setSpecialColors] = useState({});
+  const themeContext = useContext(ThemeContext);
+
+  console.log(themeContext);
+  console.log(specialColors);
+  console.log({ ...themeContext, ...specialColors });
+
   return (
     <StyledButton
-      onClick={handleClick}
+      theme={{
+        ...themeContext,
+        ...specialColors,
+      }}
+      onClick={e => {
+        setSpecialColors({
+          specialColors: { ...themeContext.colors, primaryColor: 'green' },
+        });
+      }}
       isPrimary={isPrimary}
       isSecondary={isSecondary}
       isTertiary={isTertiary}

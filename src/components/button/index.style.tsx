@@ -21,7 +21,11 @@ export const StyledButton = styled(ButtonReset)`
       border-radius: ${buttonProps.theme.button.borderRadius};
       font-size: ${buttonProps.theme.button.fontSize};
       font-weight: ${buttonProps.theme.button.fontWeight};
-      color: ${buttonProps.theme.colors.primaryColor};
+      color: ${
+        buttonProps.theme.specialColors
+          ? buttonProps.theme.specialColors.primaryColor
+          : buttonProps.theme.colors.primaryColor
+      };
       background-color: ${buttonProps.theme.colors.primaryBackgroundColor};
 
       &:hover {

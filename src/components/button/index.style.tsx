@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css, SimpleInterpolation } from 'styled-components';
 import { darken } from 'polished';
 import ButtonReset from '../inputResets/buttonReset';
 
 import { above, below, between } from '../../assets/styles/media';
 
-interface buttonStyleProps {
+interface ButtonStyleProps {
   disabled?: boolean;
   isPrimary?: boolean;
   isSecondary?: boolean;
@@ -13,7 +13,7 @@ interface buttonStyleProps {
 }
 
 export const StyledButton = styled(ButtonReset)`
-  ${(buttonProps: buttonStyleProps) =>
+  ${(buttonProps: ButtonStyleProps): SimpleInterpolation =>
     buttonProps.isPrimary &&
     css`
       height: ${buttonProps.theme.button.height};
@@ -33,7 +33,7 @@ export const StyledButton = styled(ButtonReset)`
       }
     `}
 
-  ${(buttonProps: buttonStyleProps) =>
+  ${(buttonProps: ButtonStyleProps): SimpleInterpolation =>
     buttonProps.isSecondary &&
     css`
       height: ${buttonProps.theme.button.height};

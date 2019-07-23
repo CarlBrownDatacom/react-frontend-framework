@@ -21,9 +21,9 @@ const Button: FunctionComponent<ButtonProps> = ({
 
   useEffect(() => {
     if (temp) {
-      tempy(true)
+      tempy(true);
     }
-  }, [])
+  }, []);
 
   return (
     <StyledButton

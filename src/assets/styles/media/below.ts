@@ -1,12 +1,10 @@
-import {
-  css,
-  ThemedCssFunction,
-  FlattenSimpleInterpolation,
-} from 'styled-components';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import THEME from '../config';
 
-interface layout {
+interface Layout {
   mobile: object;
   mobileLarge: object;
   tablet: object;
@@ -14,18 +12,12 @@ interface layout {
   desktopLarge: object;
 }
 
-export default (Object.keys(THEME.layout) as any).reduce(
-  (accumulator: any, breakpoint: keyof layout): layout => {
-    accumulator[breakpoint] = (
-      styles: FlattenSimpleInterpolation,
-    ): FlattenSimpleInterpolation => css`
-      @media screen and (max-width: ${THEME.layout[breakpoint].breakpoint -
-          1}px) {
-        ${styles}
-      }
-    `;
+export default (Object.keys(THEME.layout) as any).reduce((accumulator: Layout, breakpoint: keyof Layout): Layout => {
+  accumulator[breakpoint] = (styles: FlattenSimpleInterpolation): FlattenSimpleInterpolation => css`
+    @media screen and (max-width: ${THEME.layout[breakpoint].breakpoint - 1}px) {
+      ${styles}
+    }
+  `;
 
-    return accumulator;
-  },
-  {} as { [key in keyof typeof THEME.layout]: ThemedCssFunction<layout> },
-);
+  return accumulator;
+}, {});

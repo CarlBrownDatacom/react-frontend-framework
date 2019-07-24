@@ -3,7 +3,6 @@ import { normalize } from 'polished';
 
 import THEME from './config';
 
-
 const GlobalStyle = createGlobalStyle`
   ${normalize()}
 

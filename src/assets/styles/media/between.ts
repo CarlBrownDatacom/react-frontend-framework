@@ -1,12 +1,10 @@
-import {
-  css,
-  ThemedCssFunction,
-  FlattenSimpleInterpolation,
-} from 'styled-components';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import THEME from '../config';
 
-interface layout {
+interface Layout {
   mobile: object;
   mobileLarge: object;
   tablet: object;
@@ -14,34 +12,23 @@ interface layout {
   desktopLarge: object;
 }
 
-export default (Object.keys(THEME.layout) as any).reduce(
-  (fromAccumulator: any, fromName: keyof layout) => {
-    const from: any = fromAccumulator;
+export default (Object.keys(THEME.layout) as any).reduce((fromAccumulator: Layout, fromName: keyof Layout): Layout => {
+  const from = fromAccumulator;
 
-    from[fromName] = (Object.keys(THEME.layout) as any).reduce(
-      (toAccumulator: any, toName: keyof layout) => {
-        const to: any = toAccumulator;
+  from[fromName] = (Object.keys(THEME.layout) as any).reduce((toAccumulator: Layout, toName: keyof Layout): Layout => {
+    const to = toAccumulator;
 
-        const minWidth: string = `(min-width: ${
-          THEME.layout[fromName].breakpoint
-        }px)`;
-        const maxWidth: string = `(max-width: ${THEME.layout[toName]
-          .breakpoint - 1}px)`;
+    const minWidth = `min-width: ${THEME.layout[fromName].breakpoint}px`;
+    const maxWidth = `max-width: ${THEME.layout[toName].breakpoint - 1}px`;
 
-        to[toName] = (
-          styles: FlattenSimpleInterpolation,
-        ): FlattenSimpleInterpolation => css`
-      @media screen and ${minWidth} and ${maxWidth} {
+    to[toName] = (styles: FlattenSimpleInterpolation): FlattenSimpleInterpolation => css`
+      @media screen and (${minWidth}) and (${maxWidth}) {
         ${styles}
       }
     `;
 
-        return to;
-      },
-      {} as FlattenSimpleInterpolation,
-    );
+    return to;
+  }, {});
 
-    return from;
-  },
-  {} as { [key in keyof typeof THEME.layout]: ThemedCssFunction<layout> },
-);
+  return from;
+}, {});

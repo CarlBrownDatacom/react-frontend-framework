@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react'; // importing FunctionComponent
+import React, { useState, useEffect } from 'react'; // importing FunctionComponent
 import { StyledButton } from './index.style';
 
 interface ButtonProps {
+  children: React.ReactChild;
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   isPrimary?: boolean;
@@ -9,14 +10,22 @@ interface ButtonProps {
   isTertiary?: boolean;
 }
 
-const Button: FunctionComponent<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   handleClick,
   isPrimary = false,
   isSecondary = false,
   isTertiary = false,
   disabled = false,
-}) => {
+}: ButtonProps): React.ReactElement => {
+  const [temp, tempy] = useState(false);
+
+  useEffect((): void => {
+    if (temp) {
+      tempy(true);
+    }
+  }, [temp]);
+
   return (
     <StyledButton
       onClick={handleClick}

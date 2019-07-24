@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'; // importing FunctionCompone
 import { StyledButton } from './index.style';
 
 interface ButtonProps {
-  children: React.ReactChild,
+  children: React.ReactChild;
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   isPrimary?: boolean;
@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
 }: ButtonProps): React.ReactElement => {
   const [temp, tempy] = useState(false);
 
-  useEffect(() : void => {
+  useEffect((): void => {
     if (temp) {
       tempy(true);
     }

@@ -10,13 +10,13 @@ const App: React.FC = (): React.ReactElement => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit 
-          <code>src/App.tsx</code> 
+          Edit
+          <code>src/App.tsx</code>
           and save to reload.
         </p>
         <Button
           handleClick={(): void => {
-            alert('hellow please work');
+            alert('remove this component');
           }}
           isPrimary
         >
@@ -24,18 +24,13 @@ const App: React.FC = (): React.ReactElement => {
         </Button>
         <Button
           handleClick={(): void => {
-            alert('hellow please work');
+            alert('Remove this line this compoonent');
           }}
           isSecondary
         >
           Click me
         </Button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
       </header>

@@ -1,6 +1,7 @@
 import styled, { css, SimpleInterpolation } from 'styled-components';
 import { darken } from 'polished';
 import ButtonReset from '../inputResets/buttonReset';
+import DefaultTheme from '../../assets/styles/config';
 
 import { above, below, between } from '../../assets/styles/media';
 
@@ -60,5 +61,9 @@ export const StyledButton = styled(ButtonReset)<ButtonStyleProps>`
       }
     `}
 `;
+
+StyledButton.defaultProps = {
+  theme: DefaultTheme,
+};
 
 export const temp = 'temp';

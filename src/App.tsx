@@ -14,22 +14,22 @@ const App: React.FC = (): React.ReactElement => {
           <code>src/App.tsx</code>
           and save to reload.
         </p>
-        <Button
+        {/* <Button
           handleClick={(): void => {
             alert('remove this component');
           }}
           isPrimary
         >
           Click me
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           handleClick={(): void => {
             alert('Remove this line this compoonent');
           }}
           isSecondary
         >
           Click me
-        </Button>
+        </Button> */}
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>

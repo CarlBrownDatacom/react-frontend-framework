@@ -1,5 +1,56 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# About this project
+
+This project has not been ejected, the project is a kick starter which will allow developers to start developing with a core foundation
+
+## Styled components
+
+This project utilises Styled components themes with CSS in JS
+- Theme info is found /src/assets/styles/config
+- Media querys are found /src/assets/styles/media and are called like this 
+```
+import { above, below, between } from '../../assets/styles/media';
+    ${above.tablet(css`
+        color: yellow;
+      `)}
+      
+      ${below.tablet(css`
+        color: orange;
+        background-color: green;
+      `)}
+
+      ${between.tablet.desktop(css`
+        background-color: purple;
+        color: green;
+      `)}
+```
+- further information can be found - https://www.styled-components.com/docs
+
+## Typescript
+
+- Custom Typings are created in /src/typings
+- Eslint has a typescript parser, TSLINT is being DEPRECATED as of 2019
+- Typescript docs = https://www.typescriptlang.org/docs/home.html
+
+## Testing
+
+- React testing library docs https://testing-library.com/docs/react-testing-library/intro 
+
+##VSCODE setup IMPORTANT
+
+#### Extensions
+
+- ESLint setup requires these settings
+```"eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    {"language": "javascript", "autoFix": false},
+    {"language": "javascriptreact", "autoFix": false},
+    {"language": "typescript", "autoFix": true},
+    {"language": "typescriptreact", "autoFix": true},
+  ]
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

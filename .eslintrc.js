@@ -21,6 +21,7 @@ module.exports = {
     jest: true,
   },
   rules: {
+    "import/no-extraneous-dependencies": ['error', {'devDependencies': ['**/*.test.tsx', '**/*.spec.tsx']}],
     'react/prop-types': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.svg'] }],
     'react-hooks/rules-of-hooks': 'error',

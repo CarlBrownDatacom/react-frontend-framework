@@ -3,7 +3,7 @@ import { darken } from 'polished';
 import ButtonReset from '../inputResets/buttonReset';
 import DefaultTheme from '../../assets/styles/config';
 
-import { above, below, between } from '../../assets/styles/media';
+import { below } from '../../assets/styles/media';
 
 interface ButtonStyleProps {
   disabled?: boolean;
@@ -24,9 +24,13 @@ export const StyledButton = styled(ButtonReset)<ButtonStyleProps>`
       color: ${props.theme.colors.primaryColor};
       background-color: ${props.theme.colors.primaryBackgroundColor};
 
+      ${below.mobile(css`
+        width: 100%;
+      `)}
+
       &:hover {
         cursor: pointer;
-        background-color: ${darken(0.2, props.theme.colors.primaryBackgroundColor)}});
+        background-color: ${darken(0.2, props.theme.colors.primaryBackgroundColor)});
       }
     `}
 
@@ -41,23 +45,13 @@ export const StyledButton = styled(ButtonReset)<ButtonStyleProps>`
       color: ${props.theme.colors.primaryBackgroundColor};
       background-color: ${props.theme.colors.primaryColor};
 
-      ${above.tablet(css`
-        color: yellow;
-      `)}
-
-      ${below.tablet(css`
-        color: orange;
-        background-color: green;
-      `)}
-
-      ${between.tablet.desktop(css`
-        background-color: purple;
-        color: green;
+      ${below.mobile(css`
+        width: 100%;
       `)}
 
       &:hover {
         cursor: pointer;
-        background-color: ${darken(0.2, props.theme.colors.errorColor)}});
+        background-color: ${darken(0.2, props.theme.colors.errorColor)});
       }
     `}
 `;
